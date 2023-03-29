@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./shop.css";
 import Product from "../product/Product";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 function Shop() {
   const [products, setProducts] = useState([]);
@@ -17,7 +19,8 @@ function Shop() {
   // how awesome is it
   // use should grape this function in your component props
   const handelAddToCard = (product) => {
-    console.log(product);
+    const newCart = [...cart, product];
+    setCart(newCart);
   };
 
   return (
@@ -34,13 +37,15 @@ function Shop() {
         </div>
         <div className="card-details">
           <h4>Order history</h4>
-          <p>Selected Item : </p>
+          <p>Selected Item : {cart.length} </p>
           <p>Total Price : $</p>
           <p>Total shipping charge: $</p>
           <p>Tax : </p>
           <h3>Grand Total : </h3>
 
-          <button>Clear card</button>
+          <button>
+            Clear card <FontAwesomeIcon icon={faCoffee} />
+          </button>
           <button>Review Order</button>
         </div>
       </div>
